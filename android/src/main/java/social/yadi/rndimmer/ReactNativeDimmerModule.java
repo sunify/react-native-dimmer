@@ -15,11 +15,8 @@ import com.facebook.react.uimanager.IllegalViewOperationException;
 
 public class ReactNativeDimmerModule extends ReactContextBaseJavaModule {
 
-    private Activity mActivity = null;
-
-    public ReactNativeDimmerModule( ReactApplicationContext reactContext, Activity activity ) {
+    public ReactNativeDimmerModule( ReactApplicationContext reactContext ) {
         super( reactContext );
-        mActivity = activity;
     }
 
     @Override
@@ -30,6 +27,7 @@ public class ReactNativeDimmerModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void set( final boolean disabled, final Promise promise ) {
         try {
+            final Activity mActivity = getCurrentActivity();
             mActivity.runOnUiThread( new Runnable() {
                 @Override
                 public void run() {

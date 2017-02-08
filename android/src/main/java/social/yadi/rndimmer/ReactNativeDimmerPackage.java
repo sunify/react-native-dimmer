@@ -15,16 +15,13 @@ import java.util.List;
 
 public class ReactNativeDimmerPackage implements ReactPackage {
 
-    private Activity mActivity = null;
-
-    public ReactNativeDimmerPackage( Activity activity ) {
-        mActivity = activity;
+    public ReactNativeDimmerPackage() {
     }
 
     @Override
     public List<NativeModule> createNativeModules( ReactApplicationContext reactContext ) {
         List<NativeModule> modules = new ArrayList<NativeModule>();
-        modules.add( new ReactNativeDimmerModule( reactContext, mActivity ) );
+        modules.add( new ReactNativeDimmerModule( reactContext ) );
         return modules;
     }
 
